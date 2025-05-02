@@ -2369,6 +2369,14 @@ initializeCountdown();
         
         // Update countdown every second
         setInterval(updateCountdown, 1000);
+
+                // Final check to ensure we're at the right position
+                if (window.location.hash === '#join-us') {
+          var fastActionSection = document.getElementById('fast-action');
+          if (fastActionSection && Math.abs(window.scrollY - fastActionSection.offsetTop) > 50) {
+            window.scrollTo(0, fastActionSection.offsetTop);
+          }
+        }
     </script>
 </body>
 
@@ -2705,17 +2713,7 @@ initializeCountdown();
                 }
             }, 1000);
         });
-        
-
-        // Final check to ensure we're at the right position
-        if (window.location.hash === '#join-us') {
-          var fastActionSection = document.getElementById('fast-action');
-          if (fastActionSection && Math.abs(window.scrollY - fastActionSection.offsetTop) > 50) {
-            window.scrollTo(0, fastActionSection.offsetTop);
-          }
-        }
-
-
+    
     </script>
 
 </body>
