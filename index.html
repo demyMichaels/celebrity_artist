@@ -18,7 +18,7 @@
             style.id = 'temp-hide-style';
             style.innerHTML = `
               /* Temporarily hide everything except fast-action section */
-              body > *:not(#24hour) {
+              body > *:not(#fast-action) {
                 opacity: 0;
               }
               /* Ensure immediate positioning */
@@ -63,8 +63,8 @@
           if (window.location.hash === '#join-us') {
             // Store this instruction to run as early as possible
             window.addEventListener('load', function() {
-              // Get the 24hour section
-              var fastActionSection = document.getElementById('24hour');
+              // Get the fast-action section
+              var fastActionSection = document.getElementById('fast-action');
               if (fastActionSection) {
                 // Instantly scroll without animation
                 fastActionSection.scrollIntoView(false);
@@ -82,7 +82,7 @@
             
             // Also add a scroll instruction that runs even earlier (on DOMContentLoaded)
             document.addEventListener('DOMContentLoaded', function() {
-              var fastActionSection = document.getElementById('24hour');
+              var fastActionSection = document.getElementById('fast-action');
               if (fastActionSection) {
                 // Force scroll without animation
                 window.scrollTo(0, fastActionSection.offsetTop);
@@ -954,7 +954,7 @@
         // This runs as soon as DOM is parsed
         document.addEventListener('DOMContentLoaded', function() {
           if (window.location.hash === '#join-us' || sessionStorage.getItem('scrollToFastAction') === 'true') {
-            var fastActionSection = document.getElementById('24hour');
+            var fastActionSection = document.getElementById('fast-action');
             if (fastActionSection) {
               // Scroll immediately without animation
               window.scrollTo(0, fastActionSection.getBoundingClientRect().top + window.pageYOffset);
@@ -968,7 +968,7 @@
                 if (hideStyle) {
                   hideStyle.innerHTML = `
                     /* Fade in the rest of the content */
-                    body > *:not(#24hour) {
+                    body > *:not(#fast-action) {
                       opacity: 1;
                       transition: opacity 0.3s ease;
                     }
@@ -991,7 +991,7 @@
         // Execute as early as possible in the body
         (function() {
           if (window.location.hash === '#join-us' || sessionStorage.getItem('scrollToFastAction') === 'true') {
-            var fastActionElement = document.getElementById('24hour');
+            var fastActionElement = document.getElementById('fast-action');
             if (fastActionElement) {
               // Force immediate scroll
               window.scrollTo({
@@ -1000,7 +1000,7 @@
               });
               
               // Mark the body with a class for potential CSS targeting
-              document.body.classList.add('direct-to-24hour');
+              document.body.classList.add('direct-to-fast-action');
             }
           }
         })();
@@ -2189,7 +2189,7 @@
         }
 
         /* This helps ensure the section is properly positioned in the viewport */
-        #24hour {
+        #fast-action {
         scroll-margin-top: 20px;
         }
 
@@ -2197,7 +2197,7 @@
 </head>
 <body class= >
 
-    <section id="fast-action" bg-[#e5d2a1] dark:bg-[#e5d2a1] flex flex-col items-center justify-center py-8 w-full" style="scroll-margin-top: 0px;">
+    <section id= "fast-action" class=" bg-[#e5d2a1] dark:bg-[#e5d2a1] flex flex-col items-center justify-center py-8 w-full" style="scroll-margin-top: 0px;">
         <!-- "Imagine How Different" Section -->
         <div class="w-full max-w-4xl px-4 py-8 text-center bg-black text-white">
             <h2 class="text-xl md:text-2xl font-medium mb-2">Imagine How Different You Would Feel In Just 6 Weeks</h2>
@@ -2251,7 +2251,7 @@
         </div>
         
         <!-- Countdown Timer Section - Half-width Design -->
-        <div id="24hour" class="w-full flex justify-center mb-5">
+        <div class="w-full flex justify-center mb-5">
             <div class="w-full md:w-3/4 lg:w-2/3 rounded-lg overflow-hidden shadow-lg">
                 <div class="bg-black text-white text-center py-6 px-4">
                     <h2 class="text-xl font-bold mb-2">Get your exclusive fast action bonus Now!</h2>
@@ -2621,7 +2621,7 @@ initializeCountdown();
                         e.preventDefault();
                     }
                     
-                    const targetSection = document.getElementById('24hour');
+                    const targetSection = document.getElementById('fast-action');
                     
                     if (targetSection) {
                         targetSection.scrollIntoView({
