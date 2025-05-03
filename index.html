@@ -954,7 +954,7 @@
         // This runs as soon as DOM is parsed
         document.addEventListener('DOMContentLoaded', function() {
           if (window.location.hash === '#join-us' || sessionStorage.getItem('scrollToFastAction') === 'true') {
-            var fastActionSection = document.getElementById('fast-action');
+            var fastActionSection = document.getElementById('fast-action-timer');
             if (fastActionSection) {
               // Scroll immediately without animation
               window.scrollTo(0, fastActionSection.getBoundingClientRect().top + window.pageYOffset);
@@ -968,7 +968,7 @@
                 if (hideStyle) {
                   hideStyle.innerHTML = `
                     /* Fade in the rest of the content */
-                    body > *:not(#fast-action) {
+                    body > *:not(#fast-action-timer) {
                       opacity: 1;
                       transition: opacity 0.3s ease;
                     }
@@ -991,7 +991,7 @@
         // Execute as early as possible in the body
         (function() {
           if (window.location.hash === '#join-us' || sessionStorage.getItem('scrollToFastAction') === 'true') {
-            var fastActionElement = document.getElementById('fast-action');
+            var fastActionElement = document.getElementById('fast-action-timer');
             if (fastActionElement) {
               // Force immediate scroll
               window.scrollTo({
@@ -1000,7 +1000,7 @@
               });
               
               // Mark the body with a class for potential CSS targeting
-              document.body.classList.add('direct-to-fast-action');
+              document.body.classList.add('direct-to-fast-action-timer');
             }
           }
         })();
@@ -2189,7 +2189,7 @@
         }
 
         /* This helps ensure the section is properly positioned in the viewport */
-        #fast-action {
+        #fast-action-timer {
         scroll-margin-top: 20px;
         }
 
@@ -2621,7 +2621,7 @@ initializeCountdown();
                         e.preventDefault();
                     }
                     
-                    const targetSection = document.getElementById('fast-action');
+                    const targetSection = document.getElementById('fast-action-timer');
                     
                     if (targetSection) {
                         targetSection.scrollIntoView({
