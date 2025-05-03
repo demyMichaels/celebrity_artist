@@ -18,7 +18,7 @@
             style.id = 'temp-hide-style';
             style.innerHTML = `
               /* Temporarily hide everything except fast-action section */
-              body > *:not(#fast-action) {
+              body > *:not(#fast-action-timer) {
                 opacity: 0;
               }
               /* Ensure immediate positioning */
@@ -64,7 +64,7 @@
             // Store this instruction to run as early as possible
             window.addEventListener('load', function() {
               // Get the fast-action section
-              var fastActionSection = document.getElementById('fast-action');
+              var fastActionSection = document.getElementById('fast-action-timer');
               if (fastActionSection) {
                 // Instantly scroll without animation
                 fastActionSection.scrollIntoView(false);
@@ -82,7 +82,7 @@
             
             // Also add a scroll instruction that runs even earlier (on DOMContentLoaded)
             document.addEventListener('DOMContentLoaded', function() {
-              var fastActionSection = document.getElementById('fast-action');
+              var fastActionSection = document.getElementById('fast-action-timer');
               if (fastActionSection) {
                 // Force scroll without animation
                 window.scrollTo(0, fastActionSection.offsetTop);
@@ -2197,7 +2197,7 @@
 </head>
 <body class= >
 
-    <section class=" bg-[#e5d2a1] dark:bg-[#e5d2a1] flex flex-col items-center justify-center py-8 w-full" style="scroll-margin-top: 0px;">
+    <section id="fast-action" bg-[#e5d2a1] dark:bg-[#e5d2a1] flex flex-col items-center justify-center py-8 w-full" style="scroll-margin-top: 0px;">
         <!-- "Imagine How Different" Section -->
         <div class="w-full max-w-4xl px-4 py-8 text-center bg-black text-white">
             <h2 class="text-xl md:text-2xl font-medium mb-2">Imagine How Different You Would Feel In Just 6 Weeks</h2>
@@ -2251,7 +2251,7 @@
         </div>
         
         <!-- Countdown Timer Section - Half-width Design -->
-        <div id="fast-action class="w-full flex justify-center mb-5">
+        <div id="fast-action-timer class="w-full flex justify-center mb-5">
             <div class="w-full md:w-3/4 lg:w-2/3 rounded-lg overflow-hidden shadow-lg">
                 <div class="bg-black text-white text-center py-6 px-4">
                     <h2 class="text-xl font-bold mb-2">Get your exclusive fast action bonus Now!</h2>
